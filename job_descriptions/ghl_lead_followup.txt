@@ -1,0 +1,26 @@
+Build an n8n workflow that implements a lead follow‑up sequence for GoHighLevel using its REST API. The workflow must:
+
+1. Trigger: Receive a webhook when a Meta Instant Form submits a new lead. Assume that the Meta form is already connected to a GHL account and sends lead data to n8n via webhook.
+
+2. On receiving lead data (first name, email, phone, custom field), the workflow should:
+   - Apply a specific tag "meta-lead" to the contact in GHL via API.
+   - Start a timed sequence:
+     * T+60 seconds: Send SMS #1 via GHL API (LC Phone) to the contact's phone number. SMS copy will be provided as an environment variable.
+     * T+2 minutes: Send Email #1 via GHL API to the contact's email. Email copy from environment variable.
+     * T+24 hours: Check via GHL API whether the contact has replied to any SMS or email (i.e., check conversations for inbound messages from that contact).
+       - If YES → exit workflow.
+       - If NO → send SMS #2 (nudge) via GHL API.
+     * T+48 hours: Check again for replies.
+       - If YES → exit workflow.
+       - If NO → send Email #2 (final soft close) via GHL API.
+   - End of flow: Apply a "went-cold" tag to the contact via GHL API.
+
+3. SMS must be sent via GHL's LC Phone (not Twilio). Use the appropriate GHL API endpoint for sending SMS.
+
+4. Reply detection: Use GHL API to search conversations for inbound messages from the contact after the last outbound message. The if/else condition must correctly exit the workflow if a reply is detected.
+
+5. Error handling: On any API failure, post to a Slack channel #ghl-alerts.
+
+6. All credentials (GHL API key, location ID, etc.) should be referenced via n8n environment variables.
+
+Design the workflow with proper nodes and connections.

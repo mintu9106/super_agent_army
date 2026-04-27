@@ -1,0 +1,94 @@
+{
+  "flow": [
+    {
+      "id": 1,
+      "module": "jotform:watchForSubmissions",
+      "version": 1,
+      "parameters": {
+        "__IMTHOOK__": null
+      },
+      "mapper": {},
+      "metadata": {}
+    },
+    {
+      "id": 2,
+      "module": "clickup:createTaskInList",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "name": "{{1.request.q3_q3_fullname1.first}} {{1.request.q3_q3_fullname1.last}}",
+        "list_id": "901817007752",
+        "team_id": "90182197585",
+        "space_id": "901810406212",
+        "folder_id": "901813116461",
+        "notify_all": false,
+        "custom_fields": {
+          "eb1d2f27-cb13-41ff-b370-b11b623e27b9": "{{1.request.q6_q6_email4}}",
+          "e509e11c-6a4a-422c-b0c0-bc09141b1d0c": "{{1.request.q5_q5_textbox3}}",
+          "4ff308be-5e4d-4af0-9209-21e056cac760": "{{1.request.q10_q10_radio8}}",
+          "be5573d6-fe6d-499d-a608-ebace4b51f43": "{{1.request.q7_q7_textbox5}}",
+          "1144103c-59a3-49fd-918d-6cfb8671458b": "{{1.request.q8_q8_address6.addr_line1}}{{1.request.q8_q8_address6.addr_line2}}{{1.request.q8_q8_address6.city}}{{1.request.q8_q8_address6.state}}{{1.request.q8_q8_address6.postal}}{{1.request.q8_q8_address6.country}}",
+          "33e7dd6a-0c2f-42bd-9c2a-d9ddfc58a446": "{{1.request.q27_phoneNumber.area}}{{1.request.q27_phoneNumber.phone}}",
+          "4f04c455-c23f-4f4a-828d-f740886b4a0f": "{{1.request.q14_q14_textbox12}}",
+          "f077aa14-d35d-4fcd-9010-fe9d86258bf6": "{{1.request.q13_q13_textbox11}}",
+          "f4a4c9f1-3d27-413d-9c54-4c6bdb8da062": "{{1.request.q12_q12_dropdown10}}"
+        },
+        "due_date_time": false,
+        "start_date_time": false
+      },
+      "metadata": {}
+    },
+    {
+      "id": 4,
+      "module": "xero:CreateContact",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "Name": "{{1.request.q3_q3_fullname1.first}} {{1.request.q3_q3_fullname1.last}}",
+        "EmailAddress": "{{1.request.q6_q6_email4}}",
+        "ContactNumber": "{{1.request.q27_phoneNumber.area}}{{1.request.q27_phoneNumber.phone}}",
+        "tenantId": "af454e20-21ef-4fdb-92e2-ca998769a431"
+      },
+      "metadata": {}
+    },
+    {
+      "id": 7,
+      "module": "slack:CreateMessage",
+      "version": 4,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "text": "\ud83d\ude80 New Client Alert! \ud83d\ude80\n\nA new lead just entered the system!\n\n\ud83d\udc64 Name: {{4.Name}}\n\ud83d\udce7 Email: {{4.EmailAddress}}\n\n\ud83d\udd17 Open in ClickUp: {{2.url}}\n\n\u2705 Xero Contact Created Successfully!\n\nLet's close this deal! \ud83d\udd25\n",
+        "parse": false,
+        "mrkdwn": true,
+        "channel": "C0AP0QU82HM",
+        "channelType": "public",
+        "channelWType": "list"
+      },
+      "metadata": {}
+    }
+  ],
+  "scheduling": {
+    "type": "indefinitely"
+  },
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    }
+  }
+}

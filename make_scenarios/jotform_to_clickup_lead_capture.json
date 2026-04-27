@@ -1,0 +1,59 @@
+{
+  "flow": [
+    {
+      "id": 1,
+      "module": "jotform:watchForSubmissions",
+      "version": 1,
+      "parameters": {
+        "connection": {
+          "__IMTCONN__": null
+        }
+      },
+      "mapper": {
+        "formID": ""
+      },
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "clickup:createTaskInList",
+      "version": 1,
+      "parameters": {
+        "connection": {
+          "__IMTCONN__": null
+        }
+      },
+      "mapper": {
+        "listId": "901817007752",
+        "name": "{{1.request.q3_q3_fullname1.first}} {{1.request.q3_q3_fullname1.last}}",
+        "description": "",
+        "assignee": "",
+        "dueDate": "",
+        "priority": "",
+        "status": ""
+      },
+      "metadata": {
+        "designer": {
+          "x": 500,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "scheduling": {
+    "type": "indefinitely"
+  },
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "name": "JotForm to ClickUp Lead Capture",
+      "description": "Captures JotForm submissions and creates ClickUp tasks"
+    }
+  }
+}

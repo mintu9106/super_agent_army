@@ -1,0 +1,70 @@
+{
+  "name": "Test Workflow",
+  "nodes": [
+    {
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "parameters": {},
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "parameters": {
+        "url": "https://httpbin.org/get",
+        "method": "GET",
+        "authentication": "none",
+        "sendBody": false,
+        "sendHeaders": false,
+        "sendQuery": false,
+        "options": {}
+      },
+      "position": [
+        500,
+        300
+      ]
+    },
+    {
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "parameters": {
+        "resource": "message",
+        "operation": "post",
+        "channel": "#test",
+        "text": "Done"
+      },
+      "position": [
+        750,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}

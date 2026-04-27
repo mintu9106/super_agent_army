@@ -1,0 +1,149 @@
+Build WhatsApp AI Customer Support System (n8n + OpenAI) – MVP First
+
+
+Summary
+I am building a smart WhatsApp-based customer support system powered by AI.  
+
+The goal is to create a system that can:  
+- Automatically reply to customer messages using AI  
+- Understand customer intent (orders, support, reports, etc.)  
+- Handle most requests automatically  
+- Escalate complex requests (like reports) to a human agent  
+- Send the final response back to the customer automatically  
+
+This system will later be turned into a SaaS product, but we will start with an MVP.
+
+---
+
+Scope of Work (MVP Phase):
+
+### 1. WhatsApp Integration
+- Integrate WhatsApp Business API (preferably using 360dialog or Twilio)  
+- Receive and send messages via webhook  
+
+---
+
+### 2. n8n Workflow (Core System)
+- Build workflows inside n8n to handle:
+  - Incoming messages  
+  - Routing logic  
+  - Automation  
+
+---
+
+### 3. OpenAI Integration
+- Connect OpenAI API  
+- AI should:
+  - Understand user intent  
+  - Classify messages into categories:
+    - Purchase  
+    - Order status  
+    - Support issue  
+    - Request report  
+
+---
+
+### 4. Automated Responses
+- AI replies instantly to customer  
+- Example:
+  - “Your request has been received”  
+  - “Please provide your ID”  
+
+---
+
+### 5. Human Escalation System (VERY IMPORTANT)
+When request requires human (e.g. report):
+
+- System should:
+  - Create a ticket (with ID)  
+  - Send request to staff (via WhatsApp or Telegram)  
+  - Include:
+    - Customer number  
+    - Request type  
+    - Details  
+
+---
+
+### 6. Staff Reply Handling
+- Staff replies to the system (NOT directly to customer)  
+- System captures reply  
+- Sends it back to the correct customer automatically  
+
+---
+
+### 7. Ticket System (Basic)
+- Each request has:
+  - Ticket ID  
+  - Status  
+- Simple tracking only (no complex dashboard required for MVP)
+
+---
+
+### 8. Logging
+- Log basic data:
+  - Customer number  
+  - Request type  
+  - Timestamp  
+
+---
+
+Technical Requirements:
+- Strong experience with n8n  
+- Experience with WhatsApp API (Twilio or 360dialog)  
+- Experience integrating OpenAI API  
+- Understanding of webhook-based systems  
+- Clean and documented workflows  
+
+---
+
+Nice to Have (Bonus):
+- Experience building chatbot systems  
+- Experience building SaaS systems  
+- Ability to suggest improvements  
+
+---
+
+Deliverables:
+- Fully working n8n workflows  
+- WhatsApp integration setup  
+- OpenAI integration  
+- Documentation or video explaining system  
+- Clean, maintainable structure  
+
+---
+
+Future Work (After MVP):
+If MVP is successful, we will continue to Phase 2:
+- Multi-tenant system (SaaS)  
+- Dashboard  
+- Advanced automation  
+
+---
+
+Important Notes:
+- This is NOT just a chatbot  
+- This is a system combining AI + automation + human support  
+- Simplicity and reliability are more important than complexity  
+
+---
+
+Budget:  
+(Open to proposals – but prefer reasonable pricing for MVP)
+
+---
+
+To Apply, Please Answer:
+1. Have you worked with n8n before?  
+2. Have you integrated WhatsApp API?  
+3. Example of similar work (if any)  
+4. How would you approach this system?  
+
+---
+
+Looking for a long-term collaboration if this project succeeds.
+
+$1,200.00
+
+Fixed-price
+Intermediate
+I am looking for a mix of experience and value

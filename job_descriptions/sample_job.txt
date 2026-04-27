@@ -1,0 +1,11 @@
+Title: Need n8n expert to build Airtable + GHL automation
+
+Description:
+We are looking for an experienced n8n developer to create a workflow that:
+1. Watches for new records in Airtable (Table: Leads)
+2. Sends data to GoHighLevel to create/update contacts
+3. If contact exists, add a tag "Airtable Import"
+4. Also send a Slack notification to #new-leads channel
+
+Budget: $300
+Skills: n8n, Airtable API, GoHighLevel API, Slack

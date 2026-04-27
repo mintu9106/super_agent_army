@@ -1,0 +1,12 @@
+Build an n8n workflow with the following requirements:
+
+Workflow Name: WF-A-Fulfilment
+Trigger: Shopify new order webhook
+Actions:
+1. Receive order via webhook (extract order ID, customer email, line items)
+2. Send order data to Huboo 3PL fulfilment webhook (POST)
+3. Update customer tags in Klaviyo – add tag "order_fulfilled" via Klaviyo API
+4. Trigger tracking via AfterShip API (POST /v4/trackings)
+5. Implement exponential backoff for 429 rate limits on all HTTP calls
+6. Error handling: on any failure, post to a Slack channel #alerts
+7. Dry-run mode: log actions without writing real data; enable live mode via an n8n environment variable toggle.
